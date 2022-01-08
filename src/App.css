@@ -41,7 +41,7 @@ body {
 
 .sidebar > * {
   border: none !important;
-  background-color: var(--surface) !important;
+  background-color: var(--base) !important;
 }
 
 .repeat-button {
@@ -60,6 +60,9 @@ body {
 .video-card-list-item {
   display: flex !important;
   justify-content: space-between !important;
+}
+
+.video-card-list-item:nth-child(1n+2) {
   border-top: 1px solid rgba(255,255,255,0.1);
 }
 

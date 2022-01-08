@@ -65,7 +65,7 @@ function Sidebar(props) {
       <h3>Functional Strength <br /> Training with Kara</h3>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "fit-content" }}>
         <CourseProgressBar sx={{ width: "80%" }} variant="determinate" value={50} />
-        <span>50%</span>
+        <span style={{ color: "var(--disabled)" }}>50%</span>
       </div>
     </div>
     <List>
@@ -83,7 +83,7 @@ function Sidebar(props) {
       </ListItem>
       <ListItem button key="Meet Your Instructor">
         <ListItemIcon><EmojiEventsIcon /></ListItemIcon>
-        <ListItemText primary="Events" />
+        <ListItemText primary="Meet Your Instructor" />
       </ListItem>
       <ListItem>
 
@@ -148,13 +148,13 @@ function Content(props) {
             <LockIcon style={{ margin: "0.10em" }} fontSize="inherit" />
           </span>
         </Breadcrumbs>
-        <div>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <AvatarGroup max={3}>
             <Avatar src="stretching.jpg" />
             <Avatar src="stretching.jpg" />
             <Avatar src="stretching.jpg" />
           </AvatarGroup>
-          <span><em>You and 50+ others are here</em></span>
+          <span style={{ marginLeft: "1em" }}><em>You and 50+ others are here</em></span>
         </div>
       </div>
       <h1>💪🏻 Week 1 | Form and Technique</h1>

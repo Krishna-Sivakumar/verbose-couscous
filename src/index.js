@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 ReactDOM.render(
   <ThemeProvider
@@ -11,7 +11,7 @@ ReactDOM.render(
           backgroundColor: "white"
         },
         mode: "dark",
-        backgroundColor: "var(--background)"
+        backgroundColor: "#020005"
       }
     })}
   >
