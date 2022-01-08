@@ -3,12 +3,11 @@ import './App.css';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Box from '@mui/material/Box';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
 import Divider from '@mui/material/Divider';
-import LinearProgressWithLabel, { linearProgressClasses } from '@mui/material/LinearProgress';
+import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -39,7 +38,7 @@ function RepeatButton(props) {
 
 function Sidebar(props) {
 
-  const CourseProgressBar = styled(LinearProgressWithLabel)(({ theme }) => ({
+  const CourseProgressBar = styled(LinearProgress)(({ theme }) => ({
     borderRadius: 5,
     [`&.${linearProgressClasses.colorPrimary}`]: {
       backgroundColor: "#303234"
@@ -63,7 +62,7 @@ function Sidebar(props) {
     className="sidebar"
   >
     <div style={{ backgroundImage: 'url("nav-header.png")', backgroundSize: "cover", padding: "1em" }}>
-      <h3>Functional Strength <br /> Training with Kara</h3>
+      <p>Functional Strength <br /> Training with Kara</p>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "fit-content" }}>
         <CourseProgressBar sx={{ width: "80%" }} variant="determinate" value={50} />
         <span style={{ color: "var(--disabled)" }}>50%</span>
@@ -96,7 +95,7 @@ function Sidebar(props) {
 
 function Content(props) {
 
-  const VideoProgressBar = styled(LinearProgressWithLabel)(({ theme }) => ({
+  const VideoProgressBar = styled(LinearProgress)(({ theme }) => ({
     [`&.${linearProgressClasses.colorPrimary}`]: {
       backgroundColor: "#303234"
     },
@@ -110,14 +109,14 @@ function Content(props) {
       <div style={{ marginRight: "2em", display: "flex", flexDirection: "column" }}>
         <div className="video-thumbnail-container">
           <img className="video-thumbnail" src="stretching.jpg" alt="thumbnail" />
-          <span class="video-icon">
+          <span className="video-icon">
             {
               (props.completed) ?
                 <CheckCircleIcon color="success" fontSize="large" /> :
                 <PlayArrowIcon />
             }
           </span>
-          <span class="video-time">40:08</span>
+          <span className="video-time">40:08</span>
         </div>
         <VideoProgressBar variant="determinate" value={50} />
       </div>
@@ -131,39 +130,54 @@ function Content(props) {
         <ListItemText style={{ maxWidth: "20em" }}>
           <b>Day {props.index} | {props.title}</b> <br /> {props.description}
         </ListItemText>
-        {(props.completed) ? <RepeatButton startIcon={<PlayArrowIcon />}>Watch Again</RepeatButton> : <StandardButton>Resume</StandardButton>}
+        {
+          (props.completed) ?
+            <RepeatButton startIcon={<PlayArrowIcon />}>Watch Again</RepeatButton> :
+            <StandardButton>Resume</StandardButton>
+        }
       </ListItem>
     );
+  }
+
+  function BreadcrumbItem(props) {
+
+    if (props.type && props.type === "primary") {
+      return (
+        <span type="primary" className="breadcrumb-item">
+          {props.children}
+        </span>
+      );
+    }
+
+    return (
+      <div className="breadcrumb-border">
+        <span className="breadcrumb-item">
+          {props.children}
+        </span>
+      </div>
+    )
   }
 
   return (
     <Box component="main" sx={{ textAlign: "justify", margin: "4em" }}>
       <div>
         <div className="breadcrumb-container">
-          <div className="breadcrumb-border">
-            <span type="primary" className="breadcrumb-item">
-              Week 1
-              <Avatar src="stretching.jpg" style={{ marginLeft: "1em", width: "1em", height: "1em" }} />
-            </span>
-          </div>
-          <div className="breadcrumb-border">
-            <span className="breadcrumb-item">
-              Week 2
-              <LockIcon style={{ margin: "0.10em" }} fontSize="inherit" />
-            </span>
-          </div>
-          <div className="breadcrumb-border">
-            <span className="breadcrumb-item">
-              Week 3
-              <LockIcon style={{ margin: "0.10em" }} fontSize="inherit" />
-            </span>
-          </div>
-          <div className="breadcrumb-border">
-            <span className="breadcrumb-item">
-              Week 4
-              <LockIcon style={{ margin: "0.10em" }} fontSize="inherit" />
-            </span>
-          </div>
+          <BreadcrumbItem type="primary">
+            Week 1
+            <Avatar src="stretching.jpg" style={{ marginLeft: "1em", width: "1em", height: "1em" }} />
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            Week 2
+            <LockIcon className="lock-icon" color="grey" fontSize="inherit" />
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            Week 3
+            <LockIcon className="lock-icon" color="grey" fontSize="inherit" />
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            Week 4
+            <LockIcon className="lock-icon" color="grey" fontSize="inherit" />
+          </BreadcrumbItem>
         </div>
         <div style={{ display: "flex", alignItems: "center", marginTop: "1em" }}>
           <AvatarGroup max={3} className="watching-group">
@@ -177,7 +191,7 @@ function Content(props) {
       <h1>💪🏻 Week 1 | Form and Technique</h1>
       <List>
         {props.courseItems.map((card, index) => (
-          <VideoCard index={index + 1} {...card} />
+          <VideoCard key={index + 1} index={index + 1} {...card} />
         ))}
       </List>
     </Box>
