@@ -7,8 +7,8 @@ ReactDOM.render(
   <ThemeProvider
     theme={createTheme({
       palette: {
-        "* .MuiListItem-root": {
-          backgroundColor: "white"
+        success: {
+          main: "#37882A"
         },
         mode: "dark",
         backgroundColor: "#020005"

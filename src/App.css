@@ -137,3 +137,7 @@ body {
   background-color: var(--primary);
   color: var(--surface);
 }
+
+.lock-icon {
+  margin-left: 0.75em;
+}
