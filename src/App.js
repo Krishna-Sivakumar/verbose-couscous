@@ -158,27 +158,34 @@ function Content(props) {
     )
   }
 
+  function Breadcrumbs(props) {
+    return (
+      <div className="breadcrumb-container">
+        <BreadcrumbItem type="primary">
+          Week 1
+          <Avatar src="stretching.jpg" style={{ marginLeft: "1em", width: "1em", height: "1em" }} />
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          Week 2
+          <LockIcon className="lock-icon" color="grey" fontSize="inherit" />
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          Week 3
+          <LockIcon className="lock-icon" color="grey" fontSize="inherit" />
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          Week 4
+          <LockIcon className="lock-icon" color="grey" fontSize="inherit" />
+        </BreadcrumbItem>
+      </div>
+    );
+  }
+
   return (
     <Box component="main" sx={{ textAlign: "justify", margin: "4em" }}>
+
       <div>
-        <div className="breadcrumb-container">
-          <BreadcrumbItem type="primary">
-            Week 1
-            <Avatar src="stretching.jpg" style={{ marginLeft: "1em", width: "1em", height: "1em" }} />
-          </BreadcrumbItem>
-          <BreadcrumbItem>
-            Week 2
-            <LockIcon className="lock-icon" color="grey" fontSize="inherit" />
-          </BreadcrumbItem>
-          <BreadcrumbItem>
-            Week 3
-            <LockIcon className="lock-icon" color="grey" fontSize="inherit" />
-          </BreadcrumbItem>
-          <BreadcrumbItem>
-            Week 4
-            <LockIcon className="lock-icon" color="grey" fontSize="inherit" />
-          </BreadcrumbItem>
-        </div>
+        <Breadcrumbs />
         <div style={{ display: "flex", alignItems: "center", marginTop: "1em" }}>
           <AvatarGroup max={3} className="watching-group">
             <Avatar style={{ width: "1.5em", height: "1.5em" }} src="stretching.jpg" />
@@ -188,6 +195,7 @@ function Content(props) {
           <span style={{ marginLeft: "1em" }}><em>You and 50+ others are here</em></span>
         </div>
       </div>
+
       <h1>💪🏻 Week 1 | Form and Technique</h1>
       <List>
         {props.courseItems.map((card, index) => (
