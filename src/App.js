@@ -16,6 +16,7 @@ import ListItemText from '@mui/material/ListItemText';
 import LockIcon from '@mui/icons-material/Lock';
 import { styled } from '@mui/material/styles';
 
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import LiveTvRoundedIcon from '@mui/icons-material/LiveTvRounded';
@@ -107,9 +108,17 @@ function Content(props) {
   function VideoThumbnail(props) {
     return (
       <div style={{ marginRight: "2em", display: "flex", flexDirection: "column" }}>
-        <article style={{ display: "contents" }} className="box">
-          <img src="stretching.jpg" style={{ width: "10em" }} className="img" />
-        </article>
+        <div className="video-thumbnail-container">
+          <img className="video-thumbnail" src="stretching.jpg" alt="thumbnail" />
+          <span class="video-icon">
+            {
+              (props.completed) ?
+                <CheckCircleIcon color="success" fontSize="large" /> :
+                <PlayArrowIcon />
+            }
+          </span>
+          <span class="video-time">40:08</span>
+        </div>
         <VideoProgressBar variant="determinate" value={50} />
       </div>
     );
@@ -118,7 +127,7 @@ function Content(props) {
   function VideoCard(props) {
     return (
       <ListItem className="video-card-list-item">
-        <VideoThumbnail />
+        <VideoThumbnail completed={props.completed} />
         <ListItemText style={{ maxWidth: "20em" }}>
           <b>Day {props.index} | {props.title}</b> <br /> {props.description}
         </ListItemText>
