@@ -1,181 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+:root {
+  --primary: #FFD426;
+  --secondary: linear-gradient(180deg, rgba(255,0,107,1) 0%, rgba(165,0,243,1) 100%);
+  --success: #37882A;
+
+  --surface: #303234;
+  --base: #151516;
+  --background: #020005;
+
+  --disabled: rgba(255, 255, 255, 0.65);
+  --active: rgba(255, 255, 255, 0.9);
+}
+
 body {
   font-family: 'montserrat', sans-serif;
+  font-size: 110% !important;
 }
 
-:root {
-  --font-primary: "Helvetica", sans-serif;
-  --font-secondary: "Merriweather", serif;
-  --space: 0.5rem;
-  --space-sm: calc(var(--space) / 2);
-  --space-lg: calc(var(--space) * 4);
+.standard-button-wrapper {
+  background-color: var(--base);
+  border: 1px solid var(--base);
+  border-radius: 30px;
+  padding: 1px;
+  width: fit-content !important;
 }
 
-/* Grid properties */
-.box {
-  display: grid;
-  grid-template:
-    [box-start] "tagline actions" [box-end] /
-    [box-start] 1fr auto [box-end];
+.standard-button {
+  background-color: transparent !important;
+  color: white !important;
+  border: 1px solid var(--primary) !important;
+  box-shadow: 0px 0px 1px 0px var(--primary);
+  border-radius: 30px !important;
+  text-transform: unset !important;
 }
 
-.box > *,
-.box::before {
-  grid-area: box;
+.standard-button:hover {
+  text-shadow: 0 0 2px white;
 }
 
-.tag {
-  place-self: start;
+.sidebar > * {
+  border: none !important;
+  background-color: var(--surface) !important;
 }
 
-.title {
-  place-self: center;
+.repeat-button {
+  text-transform: unset !important;
+  background-color: #2F3036 !important;
+  border: 1px solid #464758 !important;
+  border-radius: 30px !important;
+  color: var(--disabled) !important;
 }
 
-.tagline {
-  grid-area: tagline;
-  place-self: end start;
+.repeat-button:hover {
+  color: var(--active) !important;
 }
 
-.actions {
-  grid-area: actions;
-  place-self: end;
+.video-card-list-item {
+  display: flex !important;
+  justify-content: space-between !important;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Box styles */
-.box {
-  --color: white;
-  --bg-color: crimson;
-
-  direction: var(--direction, ltr);
-  position: relative;
-  overflow: hidden;
-  padding: var(--space-sm);
-  color: var(--color, white);
-  border: 4px solid var(--bg-color, crimson);
-}
-
-.box::before {
-  content: "";
-  position: relative;
-  background: black;
-  opacity: 0.4;
-  z-index: -1;
-  transition: opacity 200ms ease-out;
-}
-
-.box img {
-  position: relative;
-  inline-size: 100%;
-  height: auto;
-  z-index: -2;
-}
-
-.tag {
-  padding: var(--space);
-  color: var(--color);
-  font-size: 0.75rem;
-  letter-spacing: 0.05rem;
-  background-color: var(--bg-color);
-}
-
-.title {
-  padding: var(--space);
-  font-size: 1.5rem;
-  font-family: var(--font-secondary);
-  line-height: 1.2;
-  text-align: center;
-  user-select: none;
-}
-
-.title a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.title a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.tagline {
-  padding: var(--space-sm) var(--space);
-  font-family: var(--font-secondary);
-  font-size: 0.9rem;
-  font-style: italic;
-  line-height: 1.2;
-  user-select: none;
-}
-
-.actions {
-  position: relative;
-  display: flex;
-  padding: var(--space-sm);
-  gap: var(--space-sm);
-}
-
-.btn {
-  display: flex;
-  cursor: pointer;
-  padding: var(--space);
-  font-size: inherit;
-  font-family: inherit;
-  color: var(--color);
-  background-color: var(--bg-color);
-  border: none;
-}
-
-.btn:hover {
-  filter: contrast(80%);
-}
-
-.btn:active {
-  transform: translateY(1px);
-}
-
-[data-icon] {
-  inline-size: 1em;
-  fill: currentcolor;
-}
-
-/* Transitions */
-.box {
-  transition: border-color 200ms ease;
-}
-
-.box:hover {
-  border-color: transparent;
-}
-
-.box .tagline {
-  opacity: 0;
-}
-
-.box .title,
-.box .tagline,
-.box::before {
-  transition: opacity 200ms ease;
-}
-
-.box:hover .title,
-.box:hover .tagline,
-.box:hover::before {
-  opacity: 0;
-}
-
-.box:hover .tagline {
-  opacity: 1;
-}
-
-.img {
-  transition: transform 200ms ease-out;
-}
-
-.box:hover .img {
-  transform: scale(1.05);
+.video-card-list-item:hover {
+  background-color: rgba(255,255,255,0.2) !important;
 }

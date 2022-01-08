@@ -8,12 +8,13 @@ import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
 import Divider from '@mui/material/Divider';
-import LinearProgressWithLabel from '@mui/material/LinearProgress';
+import LinearProgressWithLabel, { linearProgressClasses } from '@mui/material/LinearProgress';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import LockIcon from '@mui/icons-material/Lock';
+import { styled } from '@mui/material/styles';
 
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
@@ -21,7 +22,32 @@ import LiveTvRoundedIcon from '@mui/icons-material/LiveTvRounded';
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
+function StandardButton(props) {
+  return (
+    <div className="standard-button-wrapper">
+      <Button className="standard-button" {...props} />
+    </div>
+  )
+}
+
+function RepeatButton(props) {
+  return (
+    <Button className="repeat-button" {...props} />
+  )
+}
+
 function Sidebar(props) {
+
+  const CourseProgressBar = styled(LinearProgressWithLabel)(({ theme }) => ({
+    borderRadius: 5,
+    [`&.${linearProgressClasses.colorPrimary}`]: {
+      backgroundColor: "#303234"
+    },
+    [`& .${linearProgressClasses.bar}`]: {
+      background: "linear-gradient(180deg, rgba(255,0,107,1) 0%, rgba(165,0,243,1) 100%);",
+    }
+  }));
+
   return (<Drawer
     variant="permanent"
     anchor="left"
@@ -33,10 +59,14 @@ function Sidebar(props) {
         boxSizing: 'border-box',
       },
     }}
+    className="sidebar"
   >
     <div style={{ backgroundImage: 'url("nav-header.png")', backgroundSize: "cover", padding: "1em" }}>
       <h3>Functional Strength <br /> Training with Kara</h3>
-      <LinearProgressWithLabel sx={{ width: "100%" }} color="secondary" variant="determinate" value={80} />
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "fit-content" }}>
+        <CourseProgressBar sx={{ width: "80%" }} variant="determinate" value={50} />
+        <span>50%</span>
+      </div>
     </div>
     <List>
       <ListItem button key="Dashboard">
@@ -65,25 +95,34 @@ function Sidebar(props) {
 
 function Content(props) {
 
+  const VideoProgressBar = styled(LinearProgressWithLabel)(({ theme }) => ({
+    [`&.${linearProgressClasses.colorPrimary}`]: {
+      backgroundColor: "#303234"
+    },
+    [`& .${linearProgressClasses.bar}`]: {
+      background: "linear-gradient(180deg, rgba(255,0,107,1) 0%, rgba(165,0,243,1) 100%);",
+    }
+  }))
+
   function VideoThumbnail(props) {
     return (
       <div style={{ marginRight: "2em", display: "flex", flexDirection: "column" }}>
         <article style={{ display: "contents" }} className="box">
           <img src="stretching.jpg" style={{ width: "10em" }} className="img" />
         </article>
-        <LinearProgressWithLabel variant="determinate" value={50} />
+        <VideoProgressBar variant="determinate" value={50} />
       </div>
     );
   }
 
   function VideoCard(props) {
     return (
-      <ListItem>
+      <ListItem className="video-card-list-item">
         <VideoThumbnail />
         <ListItemText style={{ maxWidth: "30em" }}>
           <b>Day {props.index} | {props.title}</b> <br /> {props.description}
         </ListItemText>
-        {(props.completed) ? <Button startIcon={<PlayArrowIcon />}>Watch Again</Button> : <Button>Completed</Button>}
+        {(props.completed) ? <RepeatButton startIcon={<PlayArrowIcon />}>Watch Again</RepeatButton> : <StandardButton>Resume</StandardButton>}
       </ListItem>
     );
   }
@@ -134,7 +173,7 @@ function Hero() {
       <div>
         <h2>Week 1 | Form and Technique</h2>
         <p><em>The World's Fittest Woman Kara Saunders trains you for the next <br /> eight weeks to build strength, mobility and endurance in this series.</em></p>
-        <Button>Resume</Button>
+        <StandardButton>Resume</StandardButton>
       </div>
     </div>
   );
