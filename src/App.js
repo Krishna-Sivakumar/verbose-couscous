@@ -119,7 +119,7 @@ function Content(props) {
     return (
       <ListItem className="video-card-list-item">
         <VideoThumbnail />
-        <ListItemText style={{ maxWidth: "30em" }}>
+        <ListItemText style={{ maxWidth: "20em" }}>
           <b>Day {props.index} | {props.title}</b> <br /> {props.description}
         </ListItemText>
         {(props.completed) ? <RepeatButton startIcon={<PlayArrowIcon />}>Watch Again</RepeatButton> : <StandardButton>Resume</StandardButton>}

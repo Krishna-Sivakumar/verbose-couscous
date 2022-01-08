@@ -15,7 +15,6 @@
 
 body {
   font-family: 'montserrat', sans-serif;
-  font-size: 110% !important;
 }
 
 .standard-button-wrapper {
@@ -33,6 +32,7 @@ body {
   box-shadow: 0px 0px 1px 0px var(--primary);
   border-radius: 30px !important;
   text-transform: unset !important;
+  width: 9em !important;
 }
 
 .standard-button:hover {
@@ -50,6 +50,7 @@ body {
   border: 1px solid #464758 !important;
   border-radius: 30px !important;
   color: var(--disabled) !important;
+  width: 9em !important;
 }
 
 .repeat-button:hover {
