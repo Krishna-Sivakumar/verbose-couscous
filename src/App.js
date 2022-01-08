@@ -165,11 +165,11 @@ function Content(props) {
             </span>
           </div>
         </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <AvatarGroup max={3}>
-            <Avatar src="stretching.jpg" />
-            <Avatar src="stretching.jpg" />
-            <Avatar src="stretching.jpg" />
+        <div style={{ display: "flex", alignItems: "center", marginTop: "1em" }}>
+          <AvatarGroup max={3} className="watching-group">
+            <Avatar style={{ width: "1.5em", height: "1.5em" }} src="stretching.jpg" />
+            <Avatar style={{ width: "1.5em", height: "1.5em" }} src="stretching.jpg" />
+            <Avatar style={{ width: "1.5em", height: "1.5em" }} src="stretching.jpg" />
           </AvatarGroup>
           <span style={{ marginLeft: "1em" }}><em>You and 50+ others are here</em></span>
         </div>
