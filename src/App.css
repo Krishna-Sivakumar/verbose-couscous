@@ -60,6 +60,7 @@ body {
 .video-card-list-item {
   display: flex !important;
   justify-content: space-between !important;
+  padding: 2em 1em 2em 1em !important;
 }
 
 .video-card-list-item:nth-child(1n+2) {
@@ -109,4 +110,30 @@ body {
   margin: 3px;
   font-size: 0.75rem;
   place-self: end;
+}
+
+.breadcrumb-container {
+  display: flex;
+  margin-left: 1em;
+}
+
+.breadcrumb-border {
+  background-color: grey;
+  clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+  padding: 0.1em;
+  margin-left: -1em;
+}
+
+.breadcrumb-item {
+  clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+  padding: 0.5em 4em 0.5em;
+  background-color: var(--base);
+
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-item[type="primary"] {
+  background-color: var(--primary);
+  color: var(--surface);
 }

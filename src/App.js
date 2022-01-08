@@ -139,24 +139,32 @@ function Content(props) {
   return (
     <Box component="main" sx={{ textAlign: "justify", margin: "4em" }}>
       <div>
-        <Breadcrumbs aria-label="breadcrumb" separator=">">
-          <span style={{ display: "flex", alignItems: "center" }}>
-            Week 1
-            <HomeRoundedIcon style={{ margin: "0.10em" }} fontSize="inherit" />
-          </span>
-          <span style={{ display: "flex", alignItems: "center" }}>
-            Week 2
-            <LockIcon style={{ margin: "0.10em" }} fontSize="inherit" />
-          </span>
-          <span style={{ display: "flex", alignItems: "center" }}>
-            Week 3
-            <LockIcon style={{ margin: "0.10em" }} fontSize="inherit" />
-          </span>
-          <span style={{ display: "flex", alignItems: "center" }}>
-            Week 4
-            <LockIcon style={{ margin: "0.10em" }} fontSize="inherit" />
-          </span>
-        </Breadcrumbs>
+        <div className="breadcrumb-container">
+          <div className="breadcrumb-border">
+            <span type="primary" className="breadcrumb-item">
+              Week 1
+              <Avatar src="stretching.jpg" style={{ marginLeft: "1em", width: "1em", height: "1em" }} />
+            </span>
+          </div>
+          <div className="breadcrumb-border">
+            <span className="breadcrumb-item">
+              Week 2
+              <LockIcon style={{ margin: "0.10em" }} fontSize="inherit" />
+            </span>
+          </div>
+          <div className="breadcrumb-border">
+            <span className="breadcrumb-item">
+              Week 3
+              <LockIcon style={{ margin: "0.10em" }} fontSize="inherit" />
+            </span>
+          </div>
+          <div className="breadcrumb-border">
+            <span className="breadcrumb-item">
+              Week 4
+              <LockIcon style={{ margin: "0.10em" }} fontSize="inherit" />
+            </span>
+          </div>
+        </div>
         <div style={{ display: "flex", alignItems: "center" }}>
           <AvatarGroup max={3}>
             <Avatar src="stretching.jpg" />
