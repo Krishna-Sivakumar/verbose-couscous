@@ -61,7 +61,7 @@ function Sidebar(props) {
     }}
     className="sidebar"
   >
-    <div style={{ backgroundImage: 'url("nav-header.png")', backgroundSize: "cover", padding: "1em" }}>
+    <div className="drawer-header">
       <p>Functional Strength <br /> Training with Kara</p>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "fit-content" }}>
         <CourseProgressBar sx={{ width: "80%" }} variant="determinate" value={50} />
@@ -108,7 +108,7 @@ function Content(props) {
     return (
       <div style={{ marginRight: "2em", display: "flex", flexDirection: "column" }}>
         <div className="video-thumbnail-container">
-          <img className="video-thumbnail" src="stretching.jpg" alt="thumbnail" />
+          <img className="video-thumbnail" alt="thumbnail" src={props.img} />
           <span className="video-icon">
             {
               (props.completed) ?
@@ -118,7 +118,7 @@ function Content(props) {
           </span>
           <span className="video-time">40:08</span>
         </div>
-        <VideoProgressBar variant="determinate" value={50} />
+        <VideoProgressBar variant="determinate" value={(props.completed) ? 100 : 50} />
       </div>
     );
   }
@@ -126,7 +126,7 @@ function Content(props) {
   function VideoCard(props) {
     return (
       <ListItem className="video-card-list-item">
-        <VideoThumbnail completed={props.completed} />
+        <VideoThumbnail completed={props.completed} img={props.img} />
         <ListItemText style={{ maxWidth: "20em" }}>
           <b>Day {props.index} | {props.title}</b> <br /> {props.description}
         </ListItemText>
@@ -140,7 +140,6 @@ function Content(props) {
   }
 
   function BreadcrumbItem(props) {
-
     if (props.type && props.type === "primary") {
       return (
         <span type="primary" className="breadcrumb-item">
@@ -208,7 +207,7 @@ function Content(props) {
 
 function Hero() {
   return (
-    <div style={{ height: "27em", backgroundImage: 'url("unsplash_h4i9G-de7Po.png")', backgroundSize: "cover", backgroundRepeat: "no-repeat", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+    <div className="hero">
       <div>
         <h2>Week 1 | Form and Technique</h2>
         <p><em>The World's Fittest Woman Kara Saunders trains you for the next <br /> eight weeks to build strength, mobility and endurance in this series.</em></p>
@@ -225,31 +224,31 @@ function App() {
       title: "EMOM",
       description: "Get those muscles moving with your first 15 minute warm-up. You got this!",
       completed: true,
-      img: ""
+      img: "unsplash_tpivPdQgC20.png"
     },
     {
       title: "Lower Body Power",
       description: "Get those muscles moving with your first 15 minute warm-up. You got this!",
       completed: true,
-      img: ""
+      img: "unsplash_Nqeyae9jOd4.png"
     },
     {
       title: "Rest & Recovery",
       description: "Get those muscles moving with your first 15 minute warm-up. You got this!",
       completed: true,
-      img: ""
+      img: "unsplash_Pd5bbWoIUis.png"
     },
     {
       title: "Tabata",
       description: "Get those muscles moving with your first 15 minute warm-up. You got this!",
       completed: true,
-      img: ""
+      img: "unsplash_oP3BODek8Fc.png"
     },
     {
       title: "Rest Day",
       description: "Get those muscles moving with your first 15 minute warm-up. You got this!",
       completed: false,
-      img: ""
+      img: "stretching.jpg"
     },
   ]
 
