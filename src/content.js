@@ -1,5 +1,6 @@
 import './App.css'
 
+/* MUI Component Imports */
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Box from '@mui/material/Box';
@@ -10,13 +11,15 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
+/* Icon Imports */
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import LockIcon from '@mui/icons-material/Lock';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
+/* Custom Component Imports */
 import { StandardButton, RepeatButton } from './button';
+import Breadcrumbs from './breadcrumbs';
 
-export default function Content(props) {
+export default function ContentSection(props) {
   const VideoProgressBar = styled(LinearProgress)(({ theme }) => ({
     [`&.${linearProgressClasses.colorPrimary}`]: {
       backgroundColor: "#303234"
@@ -27,8 +30,11 @@ export default function Content(props) {
   }))
 
   function VideoCard(props) {
+    // Represents a list item in the list of course videos
 
     function VideoThumbnail(props) {
+      // Represents a video thumbnail within a VideoCard
+
       return (
         <div style={{ marginRight: "2em", display: "flex", flexDirection: "column" }}>
           <div className="video-thumbnail-container">
@@ -59,48 +65,6 @@ export default function Content(props) {
             <StandardButton>Resume</StandardButton>
         }
       </ListItem>
-    );
-  }
-
-  function Breadcrumbs(props) {
-
-    function BreadcrumbItem(props) {
-      if (props.type && props.type === "primary") {
-        return (
-          <span type="primary" className="breadcrumb-item">
-            {props.children}
-          </span>
-        );
-      }
-
-      return (
-        <div className="breadcrumb-border">
-          <span className="breadcrumb-item">
-            {props.children}
-          </span>
-        </div>
-      )
-    }
-
-    return (
-      <div className="breadcrumb-container">
-        <BreadcrumbItem type="primary">
-          Week 1
-          <Avatar src="stretching.jpg" style={{ marginLeft: "1em", width: "1em", height: "1em" }} />
-        </BreadcrumbItem>
-        <BreadcrumbItem>
-          Week 2
-          <LockIcon className="lock-icon" color="grey" fontSize="inherit" />
-        </BreadcrumbItem>
-        <BreadcrumbItem>
-          Week 3
-          <LockIcon className="lock-icon" color="grey" fontSize="inherit" />
-        </BreadcrumbItem>
-        <BreadcrumbItem>
-          Week 4
-          <LockIcon className="lock-icon" color="grey" fontSize="inherit" />
-        </BreadcrumbItem>
-      </div>
     );
   }
 
