@@ -48,53 +48,54 @@ function Sidebar(props) {
     }
   }));
 
-  return (<Drawer
-    variant="permanent"
-    anchor="left"
-    sx={{
-      width: props.drawerWidth,
-      flexShrink: 0,
-      '& .MuiDrawer-paper': {
+  return (
+    <Drawer
+      variant="permanent"
+      anchor="left"
+      sx={{
         width: props.drawerWidth,
-        boxSizing: 'border-box',
-      },
-    }}
-    className="sidebar"
-  >
-    <div className="drawer-header">
-      <p>Functional Strength <br /> Training with Kara</p>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "fit-content" }}>
-        <CourseProgressBar sx={{ width: "80%" }} variant="determinate" value={50} />
-        <span style={{ color: "var(--disabled)" }}>50%</span>
+        flexShrink: 0,
+        '& .MuiDrawer-paper': {
+          width: props.drawerWidth,
+          boxSizing: 'border-box',
+        },
+      }}
+      className="sidebar"
+    >
+      <div className="drawer-header">
+        <p>Functional Strength <br /> Training with Kara</p>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "fit-content" }}>
+          <CourseProgressBar sx={{ width: "80%" }} variant="determinate" value={50} />
+          <span style={{ color: "var(--disabled)" }}>50%</span>
+        </div>
       </div>
-    </div>
-    <List>
-      <ListItem button key="Dashboard">
-        <ListItemIcon><HomeRoundedIcon /></ListItemIcon>
-        <ListItemText primary="Dashboard" />
-      </ListItem>
-      <ListItem button key="Modules">
-        <ListItemIcon><LiveTvRoundedIcon /></ListItemIcon>
-        <ListItemText primary="Modules" />
-      </ListItem>
-      <ListItem button key="Events">
-        <ListItemIcon><MilitaryTechIcon /></ListItemIcon>
-        <ListItemText primary="Events" />
-      </ListItem>
-      <ListItem button key="Meet Your Instructor">
-        <ListItemIcon><EmojiEventsIcon /></ListItemIcon>
-        <ListItemText primary="Meet Your Instructor" />
-      </ListItem>
-      <ListItem>
+      <List>
+        <ListItem button key="Dashboard">
+          <ListItemIcon><HomeRoundedIcon /></ListItemIcon>
+          <ListItemText primary="Dashboard" />
+        </ListItem>
+        <ListItem button key="Modules">
+          <ListItemIcon><LiveTvRoundedIcon /></ListItemIcon>
+          <ListItemText primary="Modules" />
+        </ListItem>
+        <ListItem button key="Events">
+          <ListItemIcon><MilitaryTechIcon /></ListItemIcon>
+          <ListItemText primary="Events" />
+        </ListItem>
+        <ListItem button key="Meet Your Instructor">
+          <ListItemIcon><EmojiEventsIcon /></ListItemIcon>
+          <ListItemText primary="Meet Your Instructor" />
+        </ListItem>
+        <ListItem>
 
-      </ListItem>
-    </List>
-    <Divider />
-  </Drawer>);
+        </ListItem>
+      </List>
+      <Divider />
+    </Drawer>
+  );
 }
 
 function Content(props) {
-
   const VideoProgressBar = styled(LinearProgress)(({ theme }) => ({
     [`&.${linearProgressClasses.colorPrimary}`]: {
       backgroundColor: "#303234"
@@ -104,26 +105,27 @@ function Content(props) {
     }
   }))
 
-  function VideoThumbnail(props) {
-    return (
-      <div style={{ marginRight: "2em", display: "flex", flexDirection: "column" }}>
-        <div className="video-thumbnail-container">
-          <img className="video-thumbnail" alt="thumbnail" src={props.img} />
-          <span className="video-icon">
-            {
-              (props.completed) ?
-                <CheckCircleIcon color="success" fontSize="large" /> :
-                <PlayArrowIcon />
-            }
-          </span>
-          <span className="video-time">40:08</span>
-        </div>
-        <VideoProgressBar variant="determinate" value={(props.completed) ? 100 : 50} />
-      </div>
-    );
-  }
-
   function VideoCard(props) {
+
+    function VideoThumbnail(props) {
+      return (
+        <div style={{ marginRight: "2em", display: "flex", flexDirection: "column" }}>
+          <div className="video-thumbnail-container">
+            <img className="video-thumbnail" alt="thumbnail" src={props.img} />
+            <span className="video-icon">
+              {
+                (props.completed) ?
+                  <CheckCircleIcon color="success" fontSize="large" /> :
+                  <PlayArrowIcon />
+              }
+            </span>
+            <span className="video-time">40:08</span>
+          </div>
+          <VideoProgressBar variant="determinate" value={(props.completed) ? 100 : 50} />
+        </div>
+      );
+    }
+
     return (
       <ListItem className="video-card-list-item">
         <VideoThumbnail completed={props.completed} img={props.img} />
@@ -139,25 +141,26 @@ function Content(props) {
     );
   }
 
-  function BreadcrumbItem(props) {
-    if (props.type && props.type === "primary") {
+  function Breadcrumbs(props) {
+
+    function BreadcrumbItem(props) {
+      if (props.type && props.type === "primary") {
+        return (
+          <span type="primary" className="breadcrumb-item">
+            {props.children}
+          </span>
+        );
+      }
+
       return (
-        <span type="primary" className="breadcrumb-item">
-          {props.children}
-        </span>
-      );
+        <div className="breadcrumb-border">
+          <span className="breadcrumb-item">
+            {props.children}
+          </span>
+        </div>
+      )
     }
 
-    return (
-      <div className="breadcrumb-border">
-        <span className="breadcrumb-item">
-          {props.children}
-        </span>
-      </div>
-    )
-  }
-
-  function Breadcrumbs(props) {
     return (
       <div className="breadcrumb-container">
         <BreadcrumbItem type="primary">
@@ -180,27 +183,34 @@ function Content(props) {
     );
   }
 
-  return (
-    <Box component="main" sx={{ textAlign: "justify", margin: "4em" }}>
-
-      <div>
-        <Breadcrumbs />
-        <div style={{ display: "flex", alignItems: "center", marginTop: "1em" }}>
-          <AvatarGroup max={3} className="watching-group">
-            <Avatar style={{ width: "1.5em", height: "1.5em" }} src="stretching.jpg" />
-            <Avatar style={{ width: "1.5em", height: "1.5em" }} src="stretching.jpg" />
-            <Avatar style={{ width: "1.5em", height: "1.5em" }} src="stretching.jpg" />
-          </AvatarGroup>
-          <span style={{ marginLeft: "1em" }}><em>You and 50+ others are here</em></span>
-        </div>
+  function Participants(props) {
+    return (
+      <div style={{ display: "flex", alignItems: "center", marginTop: "1em" }}>
+        <AvatarGroup max={3} className="watching-group">
+          <Avatar style={{ width: "1.5em", height: "1.5em" }} src="stretching.jpg" />
+          <Avatar style={{ width: "1.5em", height: "1.5em" }} src="stretching.jpg" />
+          <Avatar style={{ width: "1.5em", height: "1.5em" }} src="stretching.jpg" />
+        </AvatarGroup>
+        <span style={{ marginLeft: "1em" }}><em>You and 50+ others are here</em></span>
       </div>
+    );
+  }
+
+  return (
+    <Box component="main" sx={{ textAlign: "justify", margin: "4em", display: "block" }}>
+
+      <Breadcrumbs />
+
+      <Participants />
 
       <h1>💪🏻 Week 1 | Form and Technique</h1>
+
       <List>
         {props.courseItems.map((card, index) => (
           <VideoCard key={index + 1} index={index + 1} {...card} />
         ))}
       </List>
+
     </Box>
   );
 }

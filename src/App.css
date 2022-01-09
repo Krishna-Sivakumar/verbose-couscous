@@ -17,6 +17,8 @@ body {
   font-family: 'montserrat', sans-serif;
 }
 
+/* Button Styles */
+
 .standard-button-wrapper {
   background-color: var(--base);
   border: 1px solid var(--base);
@@ -39,11 +41,6 @@ body {
   text-shadow: 0 0 2px white;
 }
 
-.sidebar > * {
-  border: none !important;
-  background-color: var(--base) !important;
-}
-
 .repeat-button {
   text-transform: unset !important;
   background-color: #2F3036 !important;
@@ -56,6 +53,19 @@ body {
 .repeat-button:hover {
   color: var(--active) !important;
 }
+
+/* End Button Styles */
+
+/* Sidebar Style */
+
+.sidebar > * {
+  border: none !important;
+  background-color: var(--base) !important;
+}
+
+/* End Sidebar Style */
+
+/* Video Thumbnail Styles */
 
 .video-card-list-item {
   display: flex !important;
@@ -112,6 +122,10 @@ body {
   place-self: end;
 }
 
+/* End Video Thumbnail Styles */
+
+/* Breadcrumb Styles */
+
 .breadcrumb-container {
   display: flex;
   margin-left: 1em;
@@ -138,6 +152,11 @@ body {
   color: var(--surface);
 }
 
+/* End Breadcrumb Styles */
+
+
+/* Miscillaneous Styles */
+
 .lock-icon {
   margin-left: 0.75em;
 }
@@ -158,3 +177,5 @@ body {
   background-size: "cover"; 
   padding: 1em;
 }
+
+/* End Miscillaneous Styles */
